@@ -144,7 +144,6 @@ contract ChiHuoBao {
         // 得到订单号
         string memory orderNo = mapTx2OrderNo[_txHash];
         
-        // todo 需要orderno存在
         return mapNo2Order[orderNo]._totalPrice;
     }
     
@@ -154,7 +153,6 @@ contract ChiHuoBao {
         // 得到订单号
         string memory orderNo = mapTx2OrderNo[_txHash];
         
-        // todo 需要orderno存在
         return mapNo2Order[orderNo]._mealNumTotal;
     }
     
@@ -163,14 +161,12 @@ contract ChiHuoBao {
         // 得到订单号
         string memory orderNo = mapTx2OrderNo[_txHash];
         
-        // todo 需要orderno存在
         return mapNo2Order[orderNo]._mealTypeNum;
     }
     
     // 根据菜品ID得到相应的信息
     function getCorrespondingInfoByMealId(uint256 mealNo) public view returns(uint128, uint128, uint128, uint128, uint128){
         
-        // todo 菜品id是否存在
         Meal memory meal = mapNo2Meal[mealNo];
         return (90, meal._avrPrice, meal._minPrice, meal._maxPrice, meal._sales);
     }
@@ -178,14 +174,12 @@ contract ChiHuoBao {
     // 根据订单序号取得相应数据
     function getElaborateInfoByNo(string orderNo) public view returns(uint256, uint256, uint256){//订单时间，订单总价，菜品种类
         
-        // todo 需要订单号存在
         Order memory order = mapNo2Order[orderNo];
         return (order._time, order._totalPrice, order._mealTypeNum);
     }
     
     // 根据订单号返回相应的 txHash
     function getTxhashByOrderNo(string orderNo) public view returns(bytes32) {
-        // todo 订单号是否存在
         return mapOrderNo2Tx[orderNo];
     }
 }
